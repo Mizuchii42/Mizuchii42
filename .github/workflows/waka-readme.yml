@@ -1,8 +1,12 @@
 name: Waka Readme
 
 on:
+  # Untuk trigger manual dari GitHub Actions tab
   workflow_dispatch:
+  
+  # Schedule untuk auto-update setiap hari
   schedule:
+    # Runs at 12 AM UTC (7 AM WIB)
     - cron: "0 0 * * *"
 
 jobs:
@@ -12,22 +16,37 @@ jobs:
     steps:
       - uses: athul/waka-readme@master
         with:
+          # ===== REQUIRED =====
           WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
-          API_BASE_URL: https://wakatime.com/api
-          REPOSITORY: Mizuchii42/Mizuchii42
+          
+          # ===== OPTIONAL (hanya jika bukan profile readme) =====
+          # GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          # REPOSITORY: username/repo-name
+          
+          # ===== META CONFIGURATION =====
+          # Uncomment jika pakai Wakapi atau Hakatime
+          # API_BASE_URL: https://wakatime.com/api
+          
+          # ===== CONTENT CONFIGURATION =====
           SHOW_TITLE: true
           SECTION_NAME: waka
-          BLOCKS: ->
-          CODE_LANG: rust
-          TIME_RANGE: all_time
-          LANG_COUNT: 10
+          BLOCKS: ░▒▓█
+          CODE_LANG: txt
+          TIME_RANGE: last_7_days
+          LANG_COUNT: 5
           SHOW_TIME: true
           SHOW_TOTAL: true
           SHOW_MASKED_TIME: false
-          STOP_AT_OTHER: true
-          IGNORED_LANGUAGES: YAML JSON TOML
+          STOP_AT_OTHER: false
+          
+          # Sembunyikan bahasa tertentu (pisahkan dengan spasi)
+          # IGNORED_LANGUAGES: YAML JSON TOML
+          
+          # ===== COMMIT CONFIGURATION =====
           COMMIT_MESSAGE: Updated waka-readme graph with new metrics
-          TARGET_BRANCH: master
+          TARGET_BRANCH: main
           TARGET_PATH: README.md
           COMMITTER_NAME: GitHubActionBot
           COMMITTER_EMAIL: action-bot@github.com
+          # AUTHOR_NAME: Your Name
+          # AUTHOR_EMAIL: your@email.com
