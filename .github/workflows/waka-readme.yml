@@ -1,15 +1,1 @@
-name: Waka Readme
 
-on:
-  workflow_dispatch:
-  schedule:
-    - cron: "0 0 * * *"
-
-jobs:
-  update-readme:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: athul/waka-readme@master
-        with:
-          WAKATIME_API_KEY: waka_89fcd47c-c0fb-43ef-9f8d-3bba118875b6
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
