@@ -11,5 +11,5 @@ jobs:
     steps:
       - uses: athul/waka-readme@master
         with:
-          WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
+          WAKATIME_API_KEY: waka_89fcd47c-c0fb-43ef-9f8d-3bba118875b6
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
